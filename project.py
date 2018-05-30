@@ -2,8 +2,8 @@ from flask import Flask
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 from database_setup import Base, Restaurant, MenuItem
-app = Flask(__name__)
 
+app = Flask(__name__)
 
 engine = create_engine('sqlite:///restaurantmenu.db')
 Base.metadata.bind = engine
@@ -20,6 +20,11 @@ def HelloWorld():
     output = ''
     for i in items:
         output += i.name
+        output += '</br>'
+        output += i.price
+        output += '</br>'
+        output += i.description
+        output += '</br>'
         output += '</br>'
     return output
 
