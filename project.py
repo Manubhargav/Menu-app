@@ -21,7 +21,7 @@ def restaurantMenuJSON(restaurant_id):
 
 
 # ADD JSON ENDPOINT HERE
-@app.route('/restaurants/<int:restaurant_id>/menu/<int:menu_id>/JSON')
+@app.route('/restaurants/<int:restaurant_id>/menu/JSON')
 def menuItemJSON(restaurant_id, menu_id):
     menuItem = session.query(MenuItem).filter_by(id=menu_id).one()
     return jsonify(MenuItem=menuItem.serialize)
@@ -57,7 +57,7 @@ def editMenuItem(restaurant_id, menu_id):
         if request.form['name']:
             editedItem.name = request.form['name']
         if request.form['description']:
-            editedItem.description = request.form['name']
+            editedItem.description = request.form['description']
         if request.form['price']:
             editedItem.price = request.form['price']
         if request.form['course']:
@@ -80,7 +80,7 @@ def deleteMenuItem(restaurant_id, menu_id):
         session.commit()
         return redirect(url_for('restaurantMenu', restaurant_id=restaurant_id))
     else:
-        return render_template('deleteconfirmation.html', item=itemToDelete)
+        return render_template('deletemenuitem.html', item=itemToDelete)
 
 
 if __name__ == '__main__':
