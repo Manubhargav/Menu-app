@@ -1,2 +1,4 @@
-Flask
+Flask==1.0.2
 gunicorn
+SQLAlchemy==1.2.7
+Flask-SQLAlchemy==2.3.2
